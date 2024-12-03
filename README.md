@@ -13,7 +13,6 @@ Key columns relevant to our question include:
 - OUTAGE.START.TIME: Time of day when outage began. 
 - OUTAGE.RESTORATION.DATE: Day of the year when outage was restored.
 - OUTAGE.RESTORATION.TIME: Time of day when outage was restored.
-- TOTAL.CUSTOMERS: Annual number of total customers served in the U.S. 
 - MONTH: Month when outage occurred.
 - CAUSE.CATEGORY: General causes (e.g., weather, equipment failure).
 - CAUSE.CATEGORY.DETAIL: Detailed description of the event that caused the outage. 
@@ -26,13 +25,13 @@ Key columns relevant to our question include:
 
 To clean our dataset, we first dropped blank rows and columns, as well as set the index to the “OBS” (Observation #) column. Then, we combined the “OUTAGE.START.DATE” and “OUTAGE.START.TIME” columns into a new column that contains pd.Timestamp objects. The same was done to the “OUTAGE.RESTORATION.DATE” and “OUTAGE.RESTORATION.TIME” columns. Additionally, we dropped the original 'OUTAGE.START.DATE', 'OUTAGE.START.TIME', 'OUTAGE.RESTORATION.DATE', 'OUTAGE.RESTORATION.TIME' columns to prevent confusion. We also converted the “TOTAL.CUSTOMERS” column from strings to integers. All of this was done for later analysis. Here are the first few rows of our cleaned dataset:
 
-|   OUTAGE.DURATION | OUTAGE.START        | OUTAGE.RESTORATION   |   TOTAL.CUSTOMERS |   MONTH | CAUSE.CATEGORY     | CAUSE.CATEGORY.DETAIL   |   UTIL.CONTRI |   CUSTOMERS.AFFECTED | U.S._STATE   |   ANOMALY.LEVEL |
-|------------------:|:--------------------|:---------------------|------------------:|--------:|:-------------------|:------------------------|--------------:|---------------------:|:-------------|----------------:|
-|              3060 | 2011-07-01 17:00:00 | 2011-07-03 20:00:00  |           2595696 |       7 | severe weather     | nan                     |       1.75139 |                70000 | Minnesota    |            -0.3 |
-|                 1 | 2014-05-11 18:38:00 | 2014-05-11 18:39:00  |           2640737 |       5 | intentional attack | vandalism               |       1.79    |                  nan | Minnesota    |            -0.1 |
-|              3000 | 2010-10-26 20:00:00 | 2010-10-28 22:00:00  |           2586905 |      10 | severe weather     | heavy wind              |       1.70627 |                70000 | Minnesota    |            -1.5 |
-|              2550 | 2012-06-19 04:30:00 | 2012-06-20 23:00:00  |           2606813 |       6 | severe weather     | thunderstorm            |       1.93209 |                68200 | Minnesota    |            -0.1 |
-|              1740 | 2015-07-18 02:00:00 | 2015-07-19 07:00:00  |           2673531 |       7 | severe weather     | nan                     |       1.6687  |               250000 | Minnesota    |             1.2 |
+|   OUTAGE.DURATION | OUTAGE.START        | OUTAGE.RESTORATION   |   MONTH | CAUSE.CATEGORY     | CAUSE.CATEGORY.DETAIL   |   UTIL.CONTRI |   CUSTOMERS.AFFECTED | U.S._STATE   |   ANOMALY.LEVEL |
+|------------------:|:--------------------|:---------------------|--------:|:-------------------|:------------------------|--------------:|---------------------:|:-------------|----------------:|
+|              3060 | 2011-07-01 17:00:00 | 2011-07-03 20:00:00  |       7 | severe weather     | nan                     |       1.75139 |                70000 | Minnesota    |            -0.3 |
+|                 1 | 2014-05-11 18:38:00 | 2014-05-11 18:39:00  |       5 | intentional attack | vandalism               |       1.79    |                  nan | Minnesota    |            -0.1 |
+|              3000 | 2010-10-26 20:00:00 | 2010-10-28 22:00:00  |      10 | severe weather     | heavy wind              |       1.70627 |                70000 | Minnesota    |            -1.5 |
+|              2550 | 2012-06-19 04:30:00 | 2012-06-20 23:00:00  |       6 | severe weather     | thunderstorm            |       1.93209 |                68200 | Minnesota    |            -0.1 |
+|              1740 | 2015-07-18 02:00:00 | 2015-07-19 07:00:00  |       7 | severe weather     | nan                     |       1.6687  |               250000 | Minnesota    |             1.2 |
 
 
 ### What Is Causing My Power Outage?
@@ -46,7 +45,16 @@ This histogram demonstrates the frequencies of power outage causes from the most
   frameborder="0"
 ></iframe>
 
-Embed at least one plotly plot that displays the relationship between two columns. Include a 1-2 sentence explanation about your plot, making sure to describe and interpret any trends present. (Your notebook will likely have more visualizations than your website, and that’s fine. Feel free to embed more than one bivariate visualization in your website if you’d like, but make sure that each embedded plot is accompanied by a description.)
+
+### How Long Will My Lights Be Out? 
+This heat map demonstrates the average power outage duration by U.S. state with darker colors indicating a longer outage duration and lighter colors indicating a shorter outage duration. Note that Alaska and Rhode Island are displayed as black because these states do not have any reported outages within the dataset.
+
+<iframe
+  src="assets/bivariate_plot.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 Embed at least one grouped table or pivot table in your website and explain its significance.
 
