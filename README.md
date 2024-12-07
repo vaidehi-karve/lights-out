@@ -41,7 +41,7 @@ This histogram demonstrates the frequencies of power outage causes from the most
 <iframe
   src="assets/univariate_plot.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 
@@ -52,7 +52,7 @@ This heat map demonstrates the average power outage duration by U.S. state with 
 <iframe
   src="assets/bivariate_plot.html"
   width="800"
-  height="600"
+  height="500"
   frameborder="0"
 ></iframe>
 
