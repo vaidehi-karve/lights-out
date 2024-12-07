@@ -39,9 +39,9 @@ To clean our dataset, we first dropped blank rows and columns, as well as set th
 This histogram demonstrates the frequencies of power outage causes from the most frequent to the least. Severe weather is the most frequent with 763 instances, and islanding is the least frequent with 46 instances.
 
 <iframe
-  src="assets/univariate_plot.html"
+  src="assets/uni_plot.html"
   width="800"
-  height="400"
+  height="500"
   frameborder="0"
 ></iframe>
 
@@ -50,13 +50,15 @@ This histogram demonstrates the frequencies of power outage causes from the most
 This heat map demonstrates the average power outage duration by U.S. state with darker colors indicating a longer outage duration and lighter colors indicating a shorter outage duration. Note that Alaska and Rhode Island are displayed as black because these states do not have any reported outages within the dataset.
 
 <iframe
-  src="assets/bivariate_plot.html"
+  src="assets/bi_plot.html"
   width="800"
   height="500"
   frameborder="0"
 ></iframe>
 
 Embed at least one grouped table or pivot table in your website and explain its significance.
+### Average Outage Duration By Month
+We were also curious to 
 
 ## Assessment of Missingness
 
