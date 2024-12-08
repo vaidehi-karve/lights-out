@@ -1,4 +1,5 @@
 # When Will My Lights Turn Back On? 🔋
+### Vaidehi Karve and Snigdha Podugu
 
 ## Introduction 💡
 
@@ -155,7 +156,7 @@ Since our p-value of 0.0 is less than the significance level of 0.01, we reject 
   frameborder="0"
 ></iframe>
 
-# Contributors 
+## Contributors 🔌
 
 - Vaidehi Karve: vkarve@ucsd.edu 
 - Snigdha Podugu: spodugu@ucsd.edu
