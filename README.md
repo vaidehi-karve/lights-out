@@ -1,4 +1,4 @@
-# When Will My Lights Turn Back On?
+# When Will My Lights Turn Back On? ![lightbult](https://png.pngtree.com/element_our/20190529/ourmid/pngtree-simple-green-light-bulb-image_1195417.jpg)
 
 ## Introduction 
 
