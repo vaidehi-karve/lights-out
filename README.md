@@ -149,7 +149,7 @@ To check the fairness of our final model, we decided to check if there is a diff
 Since our p-value of 0.0 is less than the significance level of 0.01, we reject the null hypothesis, and there is not statistically significant evidence to support that our model is fair. 
 
 <iframe
-  src="assets/RMSE_plot.html"
+  src="assets/RMSE_p.html"
   width="800"
   height="500"
   frameborder="0"
