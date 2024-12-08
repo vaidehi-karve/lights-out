@@ -25,17 +25,21 @@ Key columns relevant to our question include:
 
 To clean our dataset, we first dropped blank rows and columns, as well as set the index to the “OBS” (Observation #) column. Then, we combined the “OUTAGE.START.DATE” and “OUTAGE.START.TIME” columns into a new column that contains pd.Timestamp objects. The same was done to the “OUTAGE.RESTORATION.DATE” and “OUTAGE.RESTORATION.TIME” columns. Additionally, we dropped the original 'OUTAGE.START.DATE', 'OUTAGE.START.TIME', 'OUTAGE.RESTORATION.DATE', 'OUTAGE.RESTORATION.TIME' columns to prevent confusion. We also converted the “TOTAL.CUSTOMERS” column from strings to integers. All of this was done for later analysis. Here are the first few rows of our cleaned dataset:
 
+|   OUTAGE.DURATION | OUTAGE.START        | OUTAGE.RESTORATION   |   MONTH | CAUSE.CATEGORY     |
+|------------------:|:--------------------|:---------------------|--------:|:-------------------|
+|              3060 | 2011-07-01 17:00:00 | 2011-07-03 20:00:00  |       7 | severe weather     |
+|                 1 | 2014-05-11 18:38:00 | 2014-05-11 18:39:00  |       5 | intentional attack |
+|              3000 | 2010-10-26 20:00:00 | 2010-10-28 22:00:00  |      10 | severe weather     |
+|              2550 | 2012-06-19 04:30:00 | 2012-06-20 23:00:00  |       6 | severe weather     |
+|              1740 | 2015-07-18 02:00:00 | 2015-07-19 07:00:00  |       7 | severe weather     |
 
-<div style="overflow-x:auto;">
-|   OUTAGE.DURATION | OUTAGE.START        | OUTAGE.RESTORATION   |   MONTH | CAUSE.CATEGORY     | CAUSE.CATEGORY.DETAIL   |   UTIL.CONTRI |   CUSTOMERS.AFFECTED | U.S._STATE   |   ANOMALY.LEVEL |
-|------------------:|:--------------------|:---------------------|--------:|:-------------------|:------------------------|--------------:|---------------------:|:-------------|----------------:|
-|              3060 | 2011-07-01 17:00:00 | 2011-07-03 20:00:00  |       7 | severe weather     | nan                     |       1.75139 |                70000 | Minnesota    |            -0.3 |
-|                 1 | 2014-05-11 18:38:00 | 2014-05-11 18:39:00  |       5 | intentional attack | vandalism               |       1.79    |                  nan | Minnesota    |            -0.1 |
-|              3000 | 2010-10-26 20:00:00 | 2010-10-28 22:00:00  |      10 | severe weather     | heavy wind              |       1.70627 |                70000 | Minnesota    |            -1.5 |
-|              2550 | 2012-06-19 04:30:00 | 2012-06-20 23:00:00  |       6 | severe weather     | thunderstorm            |       1.93209 |                68200 | Minnesota    |            -0.1 |
-|              1740 | 2015-07-18 02:00:00 | 2015-07-19 07:00:00  |       7 | severe weather     | nan                     |       1.6687  |               250000 | Minnesota    |             1.2 |
-</div>
-
+| CAUSE.CATEGORY.DETAIL   |   UTIL.CONTRI |   CUSTOMERS.AFFECTED | U.S._STATE   |   ANOMALY.LEVEL |
+|:------------------------|--------------:|---------------------:|:-------------|----------------:|
+| nan                     |       1.75139 |                70000 | Minnesota    |            -0.3 |
+| vandalism               |       1.79    |                  nan | Minnesota    |            -0.1 |
+| heavy wind              |       1.70627 |                70000 | Minnesota    |            -1.5 |
+| thunderstorm            |       1.93209 |                68200 | Minnesota    |            -0.1 |
+| nan                     |       1.6687  |               250000 | Minnesota    |             1.2 |
 
 ### What Is Causing My Power Outage?
 
