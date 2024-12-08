@@ -120,7 +120,11 @@ We evaluated the following models based on the R<sup>2</sup> statistic because w
 
 ## Baseline Model
 
+At first, we decided to predict outage duration using 1 quantitative variable, CUSTOMERS.AFFECTED and 1 categorical nominal variable, CAUSE.CATEGORY. We standardized CUSTOMERS.AFFECTED and one-hot encoded CAUSE.CATEGORY, ensuring to drop a column to avoid multicollinearity. 
 
+We initially utilized CUSTOMERS.AFFECTED because we thought the number of customers in the area may have a correlation with the outage  duration. In other words, we first thought that if there were many people in the area, there may be a prolonged outage duration time. We also used CAUSE.CATEGORY because we thought outages caused by natural disasters would take longer to restore compared to man-made problems. 
+
+However, the performance of this baseline model on the training data was ~0.181 and ~0.098 on the test data. We had expected a higher score, yet the output scores suggested otherwise. We believe this might be due to the model not using "good" features. For example, if there are many customers affected because of a single power outage, there may be more urgency to restore power. As a result, we decided to fine-tune and improve our model. 
 
 ## Final Model
 
