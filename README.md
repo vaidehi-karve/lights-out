@@ -78,23 +78,42 @@ To see if the months of the year had any effect on outage duration, this pivot t
 
 CUSTOMERS.AFFECTED is likely NMAR (Not Missing At Random) because the missingness of this column depends on the values themselves. For example, a large number of customers being affected may be omitted for political or business reasons. In order for the missingness to be MAR, data on current state policies or utility providers should be obtained. 
 
-
+To determine the missingness of CAUSE.CATEGORY.DETAIL, we ran a permutation test on UTIL.CONTRI. The test yielded a p-value of 0.013, which is greater than the significance level of 0.01. Therefore, we fail to reject the null hypothesis that CAUSE.CATEGORY.DETAIL is not dependent on UTIL.CONTRI. The following shows the empirical distribution of the K-S statistics that were created from the samples in the permutation test, as well as the observed statistic of ~0.0853. 
 
 <iframe
-  src="assets/NMAR_plot.html"
+  src="assets/MCAR_plot.html"
   width="800"
   height="500"
   frameborder="0"
 ></iframe>
 
-The missingness of CAUSE.CATEGORY.DETAIL is not dependent on UTIL.CONTRI. The permutation test yielded a p-value of 0.013, which is greater than the significance level of 0.01. Therefore, we fail to reject the null hypothesis that CAUSE.CATEGORY.DETAIL is not dependent on UTIL.CONTRI. The following shows the empirical distribution of the K-S statistics that were created from the samples in the permutation test, as well as the observed statistic of ~0.0853. 
-
 
 ## Hypothesis Testing
 
+Because our goal is to understand the factors that affect power outages across the country, it is crucial to understand the impact of U.S. states on power outage durations. 
+
+Null Hypothesis: The distribution of average power outage duration is the same for U.S. states. 
+
+Alternative Hypothesis: The distribution of average power outage duration is different for U.S. states. 
+
+We chose to use TVD (Total Variation Distance) as our test statistic and a significance level of 0.01. Since the p-value of 0.004 is less than the significance level of 0.01, we reject the null hypothesis that the state has no effect on the average power outage duration.
+
 ## Framing a Prediction Problem
 
+Prediction Problem: How can we use the following features to predict outage duration using linear regression?
+
+- CUSTOMERS.AFFECTED
+- CAUSE.CATEGORY
+- U.S._STATE
+- ANOMALY.LEVEL
+
+At the time of prediction, the number of customers that are affected, the cause of the outage, the state the outage occurs in, and the anomaly level would all be known. 
+
+We evaluated the following models based on the R^2 statistic because we utilized a linear regression model over classification methods. 
+
 ## Baseline Model
+
+
 
 ## Final Model
 
