@@ -41,13 +41,13 @@ This histogram demonstrates the frequencies of power outage causes from the most
 <iframe
   src="assets/uni_plot.html"
   width="800"
-  height="500"
+  height="600"
   frameborder="0"
 ></iframe>
 
 
 ### How Long Will My Lights Be Out? 
-This heat map demonstrates the average power outage duration by U.S. state with darker colors indicating a longer outage duration and lighter colors indicating a shorter outage duration. Note that Alaska and Rhode Island are displayed as black because these states do not have any reported outages within the dataset.
+This heat map demonstrates the average power outage duration by U.S. state with darker colors indicating a longer outage duration and lighter colors indicating a shorter outage duration. Western states tend to have a lower power outage duration, whereas eastern states have longer outage durations.
 
 <iframe
   src="assets/bi_plot.html"
@@ -56,9 +56,23 @@ This heat map demonstrates the average power outage duration by U.S. state with 
   frameborder="0"
 ></iframe>
 
-Embed at least one grouped table or pivot table in your website and explain its significance.
-### Average Outage Duration By Month
-We were also curious to 
+
+To see if the months of the year had any effect on outage duration, this pivot table conveys the average outage duration by month. The table shows that April and November were the months with the shortest average outage durations, whereas October and September had the longest average outages durations. 
+
+|   MONTH |   OUTAGE.DURATION |
+|--------:|------------------:|
+|       4 |           1493.86 |
+|      11 |           1728.16 |
+|       6 |           1948.4  |
+|       5 |           2077.29 |
+|       7 |           2218.99 |
+|       8 |           2428.48 |
+|       2 |           2497.14 |
+|       3 |           3265.89 |
+|      12 |           3293.79 |
+|       1 |           3387.95 |
+|      10 |           3600.94 |
+|       9 |           4294.52 |
 
 ## Assessment of Missingness
 
