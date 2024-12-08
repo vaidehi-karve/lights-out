@@ -25,6 +25,8 @@ Key columns relevant to our question include:
 
 To clean our dataset, we first dropped blank rows and columns, as well as set the index to the “OBS” (Observation #) column. Then, we combined the “OUTAGE.START.DATE” and “OUTAGE.START.TIME” columns into a new column that contains pd.Timestamp objects. The same was done to the “OUTAGE.RESTORATION.DATE” and “OUTAGE.RESTORATION.TIME” columns. Additionally, we dropped the original 'OUTAGE.START.DATE', 'OUTAGE.START.TIME', 'OUTAGE.RESTORATION.DATE', 'OUTAGE.RESTORATION.TIME' columns to prevent confusion. We also converted the “TOTAL.CUSTOMERS” column from strings to integers. All of this was done for later analysis. Here are the first few rows of our cleaned dataset:
 
+
+<div style="overflow-x:auto;">
 |   OUTAGE.DURATION | OUTAGE.START        | OUTAGE.RESTORATION   |   MONTH | CAUSE.CATEGORY     | CAUSE.CATEGORY.DETAIL   |   UTIL.CONTRI |   CUSTOMERS.AFFECTED | U.S._STATE   |   ANOMALY.LEVEL |
 |------------------:|:--------------------|:---------------------|--------:|:-------------------|:------------------------|--------------:|---------------------:|:-------------|----------------:|
 |              3060 | 2011-07-01 17:00:00 | 2011-07-03 20:00:00  |       7 | severe weather     | nan                     |       1.75139 |                70000 | Minnesota    |            -0.3 |
@@ -32,6 +34,7 @@ To clean our dataset, we first dropped blank rows and columns, as well as set th
 |              3000 | 2010-10-26 20:00:00 | 2010-10-28 22:00:00  |      10 | severe weather     | heavy wind              |       1.70627 |                70000 | Minnesota    |            -1.5 |
 |              2550 | 2012-06-19 04:30:00 | 2012-06-20 23:00:00  |       6 | severe weather     | thunderstorm            |       1.93209 |                68200 | Minnesota    |            -0.1 |
 |              1740 | 2015-07-18 02:00:00 | 2015-07-19 07:00:00  |       7 | severe weather     | nan                     |       1.6687  |               250000 | Minnesota    |             1.2 |
+</div>
 
 
 ### What Is Causing My Power Outage?
@@ -92,15 +95,15 @@ To determine the missingness of CAUSE.CATEGORY.DETAIL, we ran a permutation test
 
 Because our goal is to understand the factors that affect power outages across the country, it is crucial to understand the impact of U.S. states on power outage durations. 
 
-Null Hypothesis: The distribution of average power outage duration is the same for U.S. states. 
+**Null Hypothesis:** The distribution of average power outage duration is the same for U.S. states.
 
-Alternative Hypothesis: The distribution of average power outage duration is different for U.S. states. 
+**Alternative Hypothesis:** The distribution of average power outage duration is different for U.S. states. 
 
 We chose to use TVD (Total Variation Distance) as our test statistic and a significance level of 0.01. Since the p-value of 0.004 is less than the significance level of 0.01, we reject the null hypothesis that the state has no effect on the average power outage duration.
 
 ## Framing a Prediction Problem
 
-Prediction Problem: How can we use the following features to predict outage duration using linear regression?
+**Prediction Problem:** How can we use the following features to predict outage duration using linear regression?
 
 - CUSTOMERS.AFFECTED
 - CAUSE.CATEGORY
@@ -109,7 +112,7 @@ Prediction Problem: How can we use the following features to predict outage dura
 
 At the time of prediction, the number of customers that are affected, the cause of the outage, the state the outage occurs in, and the anomaly level would all be known. 
 
-We evaluated the following models based on the R^2 statistic because we utilized a linear regression model over classification methods. 
+We evaluated the following models based on the R^2^ statistic because we utilized a linear regression model over classification methods. 
 
 ## Baseline Model
 
