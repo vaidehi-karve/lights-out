@@ -116,7 +116,7 @@ We chose to use TVD (Total Variation Distance) as our test statistic and a signi
 
 At the time of prediction, the number of customers that are affected, the cause of the outage, the state the outage occurs in, and the anomaly level would all be known. 
 
-We evaluated the following models based on the R^2^ statistic because we utilized a linear regression model over classification methods. 
+We evaluated the following models based on the R<sup>2</sup> statistic because we utilized a linear regression model over classification methods.
 
 ## Baseline Model
 
