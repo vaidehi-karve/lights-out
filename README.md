@@ -76,6 +76,18 @@ To see if the months of the year had any effect on outage duration, this pivot t
 
 ## Assessment of Missingness
 
+CUSTOMERS.AFFECTED is likely NMAR (Not Missing At Random) because the missingness of this column depends on the values themselves. For example, a large number of customers being affected may be omitted for political or business reasons. In order for the missingness to be MAR, data on current state policies or utility providers should be obtained. 
+
+
+
+<iframe
+  src="assets/NMAR_plot.html"
+  width="800"
+  height="500"
+  frameborder="0"
+></iframe>
+
+
 ## Hypothesis Testing
 
 ## Framing a Prediction Problem
