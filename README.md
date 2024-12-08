@@ -87,6 +87,8 @@ CUSTOMERS.AFFECTED is likely NMAR (Not Missing At Random) because the missingnes
   frameborder="0"
 ></iframe>
 
+The missingness of CAUSE.CATEGORY.DETAIL is not dependent on UTIL.CONTRI. The permutation test yielded a p-value of 0.013, which is greater than the significance level of 0.01. Therefore, we fail to reject the null hypothesis that CAUSE.CATEGORY.DETAIL is not dependent on UTIL.CONTRI. The following shows the empirical distribution of the K-S statistics that were created from the samples in the permutation test, as well as the observed statistic of ~0.0853. 
+
 
 ## Hypothesis Testing
 
