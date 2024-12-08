@@ -1,6 +1,6 @@
-# When Will My Lights Turn Back On? <img src="https://png.pngtree.com/png-clipart/20220605/original/pngtree-neon-bulb-yellow-png-image_7965133.png" width="150" />
+# When Will My Lights Turn Back On? 🔋
 
-## Introduction 
+## Introduction 💡
 
 Our [dataset](https://engineering.purdue.edu/LASCI/research-data/outages) contains major power outage data in the continental U.S. from January 2000 to July 2016. The focus is on understanding how power outage duration varies with specific factors, such as weather conditions, time of year, population density, location, and more. Contaning many variables across 1534 rows, the dataset provides key information to understanding the patterns that can help minimize the impact of future outages.
 
@@ -21,7 +21,7 @@ Key columns relevant to our question include:
 - U.S._STATE: State in the continental U.S.
 - ANOMALY.LEVEL: The oceanic El Niño/La Niña (ONI) index referring to the cold and warm episodes by season.
 
-## Data Cleaning and Exploratory Data Analysis
+## Data Cleaning and Exploratory Data Analysis 💡
 
 To clean our dataset, we first dropped blank rows and columns, as well as set the index to the “OBS” (Observation #) column. Then, we combined the “OUTAGE.START.DATE” and “OUTAGE.START.TIME” columns into a new column that contains pd.Timestamp objects. The same was done to the “OUTAGE.RESTORATION.DATE” and “OUTAGE.RESTORATION.TIME” columns. Additionally, we dropped the original 'OUTAGE.START.DATE', 'OUTAGE.START.TIME', 'OUTAGE.RESTORATION.DATE', 'OUTAGE.RESTORATION.TIME' columns to prevent confusion. We also converted the “TOTAL.CUSTOMERS” column from strings to integers. All of this was done for later analysis. Here are the first few rows of our cleaned dataset:
 
@@ -81,7 +81,7 @@ To see if the months of the year had any effect on outage duration, this pivot t
 |      10 |           3600.94 |
 |       9 |           4294.52 |
 
-## Assessment of Missingness
+## Assessment of Missingness 💡
 
 CUSTOMERS.AFFECTED is likely NMAR (Not Missing At Random) because the missingness of this column depends on the values themselves. For example, a large number of customers being affected may be omitted for political or business reasons. In order for the missingness to be MAR, data on current state policies or utility providers should be obtained. 
 
@@ -95,7 +95,7 @@ To determine the missingness of CAUSE.CATEGORY.DETAIL, we ran a permutation test
 ></iframe>
 
 
-## Hypothesis Testing
+## Hypothesis Testing 💡
 
 Because our goal is to understand the factors that affect power outages across the country, it is crucial to understand the impact of U.S. states on power outage durations. 
 
@@ -105,7 +105,7 @@ Because our goal is to understand the factors that affect power outages across t
 
 We chose to use TVD (Total Variation Distance) as our test statistic and a significance level of 0.01. Since the p-value of 0.004 is less than the significance level of 0.01, we reject the null hypothesis that the state has no effect on the average power outage duration.
 
-## Framing a Prediction Problem
+## Framing a Prediction Problem 💡
 
 **Prediction Problem:** How can we use the following features to predict outage duration using linear regression?
 
@@ -118,7 +118,7 @@ At the time of prediction, the number of customers that are affected, the cause 
 
 We evaluated the following models based on the R<sup>2</sup> statistic because we utilized a linear regression model over classification methods.
 
-## Baseline Model
+## Baseline Model 💡
 
 At first, we decided to predict outage duration using 1 quantitative variable, CUSTOMERS.AFFECTED and 1 categorical nominal variable, CAUSE.CATEGORY. We standardized CUSTOMERS.AFFECTED and one-hot encoded CAUSE.CATEGORY, ensuring to drop a column to avoid multicollinearity. 
 
@@ -126,6 +126,6 @@ We initially utilized CUSTOMERS.AFFECTED because we thought the number of custom
 
 However, the performance of this baseline model on the training data was ~0.181 and ~0.098 on the test data. We had expected a higher score, yet the output scores suggested otherwise. We believe this might be due to the model not using "good" features. For example, if there are many customers affected because of a single power outage, there may be more urgency to restore power. As a result, we decided to fine-tune and improve our model. 
 
-## Final Model
+## Final Model 💡
 
-## Fairness Analysis
+## Fairness Analysis 💡
