@@ -94,7 +94,6 @@ To determine the missingness of CAUSE.CATEGORY.DETAIL, we ran a permutation test
   frameborder="0"
 ></iframe>
 
-
 ## Hypothesis Testing 💡
 
 Because our goal is to understand the factors that affect power outages across the country, it is crucial to understand the impact of U.S. states on power outage durations. 
@@ -124,8 +123,43 @@ At first, we decided to predict outage duration using 1 quantitative variable, C
 
 We initially utilized CUSTOMERS.AFFECTED because we thought the number of customers in the area may have a correlation with the outage  duration. In other words, we first thought that if there were many people in the area, there may be a prolonged outage duration time. We also used CAUSE.CATEGORY because we thought outages caused by natural disasters would take longer to restore compared to man-made problems. 
 
-However, the performance of this baseline model on the training data was ~0.181 and ~0.098 on the test data. We had expected a higher score, yet the output scores suggested otherwise. We believe this might be due to the model not using "good" features. For example, if there are many customers affected because of a single power outage, there may be more urgency to restore power. As a result, we decided to fine-tune and improve our model. 
+However, the performance of the baseline model on the training data achieved a R<sup>2</sup> score of ~0.181 and ~0.098 on the test data. We had expected a higher score, yet the output scores suggested otherwise. We believe this might be due to the model not using "good" features. For example, if there are many customers affected because of a single power outage, there may be more urgency to restore power. As a result, we decided to fine-tune and improve our model. 
 
 ## Final Model 💡
 
+In order to fine-tune our model, we added two new features -- U.S._STATE (categorical nominal) and ANOMALY.LEVEL (quantitative). We believed that U.S._STATE would have a correlation with outage duration because there are vast geographic, political, and socioeconomic differences between the 50 states. At the same time, ANOMALY.LEVEL indicates the climate influence in the area of an outage using the ONI index. Due to the increasing severity of climate change, natural disasters may have even stronger effects on outages. 
+
+We one-hot encoded U.S._STATE and binarized ANOMALY.LEVEL with a threshold of 0. If the anomaly level was greater than 0, the transformed value would be 1 and all other anomaly levels would be 0. A transformed value of 1 indicates El Nino, or warmer oceanic temperatures, whereas a transformed value of 0 indicates La Nina, or cooler oceanic temperatures. We considered that when ocean temperatures were warm, hurricanes and other natural disasters are more prone to occur which could ultimately impact outage durations. 
+
+When choosing hyperparameters, we utilized GridSearchCV. We tuned the fit_intercept and positive hyperparameters of the LinearRegression() model, which both resulted in True values. In the end, the performance of the final model on the training data achieved a R<sup>2</sup> score of ~0.253 and ~0.102 on the test data. This is an improvement because the scores of the final model are higher than those of the baseline model, which were ~0.181 and ~0.098 on the training and test data, respectively.
+
 ## Fairness Analysis 💡
+
+To check the fairness of our final model, we decided to check if there is a difference in RMSE for outages due to natural causes or outages that are caused by other factors. 
+
+- **Group X:** Cause of outage is a natural cause (e.g., severe weather)
+- **Group Y:** Cause of outage is not a natural cause(e.g., intentional attack, equipment failure)
+- **Evaluation Metric:** RMSE (Root Mean Squared Error) 
+- **Null:** Our model is fair. There is no difference in RMSE for natural causes and non-natural causes, and any differences are due to random chance.
+- **Alternative:** Our model is unfair. There is a difference in RMSE for natural causes and non-natural causes.
+- **Test Statistic:** Difference in RMSE 
+- **Significance Level:** α = 0.01
+- **P-Value**: 0.0 
+
+Since our p-value of 0.0 is less than the significance level of 0.01, we reject the null hypothesis, and there is not statistically significant evidence to support that our model is fair. 
+
+<iframe
+  src="assets/RMSE_plot.html"
+  width="800"
+  height="500"
+  frameborder="0"
+></iframe>
+
+# Contributers 
+
+- Vaidehi Karve: vkarve@ucsd.edu 
+- Snigdha Podugu: spodugu@ucsd.edu
+
+
+
+
