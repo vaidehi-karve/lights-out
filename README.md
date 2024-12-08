@@ -155,7 +155,7 @@ Since our p-value of 0.0 is less than the significance level of 0.01, we reject 
   frameborder="0"
 ></iframe>
 
-# Contributers 
+# Contributors 
 
 - Vaidehi Karve: vkarve@ucsd.edu 
 - Snigdha Podugu: spodugu@ucsd.edu
